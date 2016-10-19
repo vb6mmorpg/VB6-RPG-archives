@@ -1,4 +1,4 @@
-# archive
+# VB6 Online RPG Games Archive
 
 This Repo is a archive of all the opensource Visual Basic 6 online RPGs I could find code for.
 
