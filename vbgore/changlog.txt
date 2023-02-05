@@ -1,0 +1,209 @@
+Archive of all the versions of vbgore from there site
+
+Can't Remember what the 0.13.0 vbgore is but its there
+
+I can not find version 0.1.0 as far as I know it was never on there site.
+
+
+Changelog
+
+Version 1.0.14
+
+Fix - NPC respawning spell status:
+
+Fix - Map editor tile setting display:
+
+Fix - Attack timer:
+
+Fix - Grh categorizing: Fixed a small typo in the Grh categorizing.
+
+Fix - Autosave bug: Fixed a bug in the autosave related to the user's server ID.
+
+Fix - Weapon attack animation: Fixed the weapon to animate with the attack animation.
+
+Fix - ChatWindow lighting: Small fix on the ChatWindow's rendering parameters with the lighting. Thanks onez0r.
+
+Fix - Equipped slot moving: Fixed a bug with moving an equipped item to a different slot.
+
+Fix - Move Keys Config: Fixed a bug with Move Keys Config. 
+
+
+Version 0.1.3
+
+Fix - NPC Editor: Fixed up some stuff in the NPC editor. It was too easy to make NPCs that broke the game before with it.
+
+Change - Startup Items: Added wings to the user's startup items.
+
+Add - Wings: Added wing graphics and support for wings paperdolling along with a wings object type. I'm sure a handful of you will like this. ;) More paper dolling items may be put in, but still thinking about it.
+
+Fix - Conversion Tools: Fixed some problems with the conversion tools that involved just not saving at all in some cases (accidentally forgot to replace the Get with Put). Also added some notifications to replace your OldInfo with your NewInfo.
+
+Fix - ModStats: Fixed modstats to also include all the weapon/armor stats, along with removed a few more stats from having mod stats (points, minhp, minmana, minsp, exp, elv, elu, gold, and points are all now discluded from having updated mod stats through the mod stat updating algorithm, though minhp, minmana and minsp still have used modstats).
+
+Change - Common Code: Placed the DataIDs, Skill IDs, Stat IDs, etc in a common code module so that way you don't have to change the code in multiple projects when changing these values.
+
+Change - Character rendering: Cleaned up the character rendering a LOT so it is much easier to read through. Also made it so how your paper dolling stuff is drawn is based upon the direction you are facing, and not just rendered in a random order. This allows you to stack paper dolling items without worrying about certain parts of an item popping up where it shouldn't be, such as making swords full when facing south but partial when facing north. This should make it so you can draw full items, and not cut-offs, along with not have to worry about dealing with proper cut-offs.
+
+Change - Body.dat, Head.dat, etc: Changed the format of the paper dolling .dat files to be more organized and cleaner, along with added comments to them on how to use them a little bit and what all the letters and numbers mean inside the file. Also optimized the loading routines in the projects that load them.
+
+Change - Grh3RawMaker output: Made the Grh3RawMaker output into the Data2 folder alongside the Grh1.raw file instead of in the root directory.
+
+Remove - Server Map Saving: Removed the map saving from the server. It wasn't needed without the devmode anymore anyways.
+
+Fix - Packet IDs: Sorted all the packet IDs to no longer have skipped numbers. Affects nothing performance-wise, but keeps things more organized.
+
+Remove - Map Updater: Removed all the existence of the in-game map editor. This will prove to be much nicer to your game server since you will no longer have people updating their maps directly off the game server's bandwidth (unless you host the update and game server on the same server computer). Also, the updater is much faster anyways.
+
+Add - Stat Window: Added a stat window that displays... well... stats! You can also add to your strength, agility and magic through this window using the stat points.
+
+Add - Free Number Tool: A quick tool that will tell you your next free Grh numbers, and Grh files, so you dont end up with tons of wasted numbers.
+
+Fix - Killing Targeted Character: Now when you kill a NPC, if they are targeted, they will be detargeted so you dont end up with them still targeted when they respawn.
+
+Fix - Close Menu Window: Fixed the menu window, and now it will close when you press escape when it is visible.
+
+Change - Simple Stats: Changed to the simple, typical kind of stat system with only Strength, Agility and Magic, and where you raise your stats after leveling up instead of based off of experience like the previous versions. Should be a lot more user-friendly to people and a lot easier to use.
+
+Fix - HP-less NPC Attacking: When attacking a NPC with no HP, instead of crashing, the attack will just not take place completely. It doesn't make sense to have NPCs with no health, anyways.
+
+Fix - Client ChangeChar Routine: Fixed a faulty invalid data check which would drop the packet if conditions were not met before retrieving all the variables, causing invalid packets to be read, and causing countless problems to be able to occur. This also, in result, fixed the "empty error box disconnect" error that was getting oh so annoying.
+
+Add - Server Updater Compression: Added compression algorithm support for the updater. By default, it uses RLE_Looped, but can be very easily changed to use any other compression algorithm.
+
+Fix - Client "Fatal Crash" Prevention: Added in a "shutdown timer" on the client and the updater client which will help prevent against the socket not having enough time to successfully close, which always brought up the crashing message.
+
+Add - Updater Bound To Client: I added a little routine that will automatically load up the updater, which will update then automatically load up the client. You can easily turn this off through a simple flag. Reccomended to keep it on, though, unless you arn't using the auto-updater. The "update-bypass" is done through a parameter in the command line, so it can be detected and completely bypassed if someone figures it out, but if someone is able to hack that then I am sure there is other stuff you'd want to worry about. Not updating the client, too, is more harm then good, anyways.
+
+Add - Pimpin' Updater: The update client / server have both been beefed. They are a lot more stable, better, and use MD5 hashes for comparison instead of the lastwrite date. This made the code a LOT less complicated, too. Tested it over and over and over, and dont seem to get any corrupt files. If anything does get corrupt, though, the MD5 should pick it up.
+
+Add - MD5: Added a MD5 module which is a wrapper for around a C++ written MD5 DLL. Normally I am not fond of incorporating DLLs in other languages of stuff that I can do in VB in my VB-based projects, but this is one of the things that dont need any customization at all.
+
+Add - Mailing Cost: Added the ability to charge people for sending mail. You can set this value through a simple constant in the server declarations (set it to 0 to disable the fee).
+
+Add - Cheap Zooming: Added a cheap hack at zooming in and out. It really wont help much, and it zooms the whole screen (it can be modified to zoom just the game screen and not the GUI if you render the game screen to a seperate surface, but not really worth it). Mainly just for testing purposes so you can see your characters up close.
+
+Add - Conversion Tools: Added a conversion tool for each type of data file held in binary (NPCs, Objs, Quests, Users, Maps). This is done purely via code and can require a bit of work to change things around (depends on how much you change the variables). Though, this is the best way I could think of to change the data files easiest with making them load/save as fast as possible.
+
+Fix - Invalid Command Parameters: Fixed the client from crashing when invalid command parameters were entered.
+
+Fix - Whispering Stability Flaw: Fixed a stability flaw in the server, which caused it to crash when in valid packets were sent.
+
+Add - Advanced Packet Editor GUI: Updated the Packet Editor GUI to be much more user-friendly.
+
+Add - Server Web-Packet Handling: The server has a seperate socket created with the Winsock control (normally I hate this socket, but for a web-based socket, having slightly slower and less advanced packets is not a problem at all) can handle packets sent to from a web server. Examples are in PHP, but can be adapted to any other web scripting language that can connect to a socket, send, and recieve packets. The data displayed on the web page using this can be any variable the server has access to (so basically, anything you can do in Visual Basic).
+
+Fix - Packet Sender: Fixed up the packet sender to have a more realistic default MaxBytes value. Also the zero-bytes will be sent.
+
+Add - Heavy Flooding Packet Flooder: You can now turn Heavy Flooding off and on in the packet flooder. Heavy flooding being turned on will send packets as fast as possible, but turned off will wait until the server has finished processing the packet to send the next one. Reccomended you only really use the Heavy Flooding setting once you have safely been able to use the non-heavy flooding setting without many problems. Out of the box, vbGORE comes tested with a lot of Heavy Flooding and should run quite well under the testing enviornment.
+
+Fix - HP/SP/MP: Chase pointed out that HP/SP/MP, when UpdateModStats was called, was being reset to the max value. These values are now bypassed when doing the UpdateModStats call.
+
+Fix - Spikefield Spell: Fixed the spike field not doing damage, which was caused by the user facing a diagonal direction.
+
+Fix - Healing Spell on NPCs: Small oversight on the healing code when casted on NPCs - it wouldn't check if the HP went over the MaxHP, so would result in NPCs having an insane amount of HP if constantly healed and could crash the server or client.
+
+Fix - Map Editor Preview: Fixed the map editor crashing if the tile preview settings for the tile selection screen is corrupt-removed.
+
+Fix - Base Stat Sending: Base stats are now sent to the user when the user is loaded - seemed to have only worked for new users before.
+
+Fix - Stat I/O: Fixed the saving and loading of character stats, which seemed to have caused errors when your stats got too high. 
+
+Version 1.0.12
+
+Fix - GrhRawAssistant: Fixed some bugs in GrhRawAssistant, such as the grid drawing correctly and the correct Grhs being listed off on non-square textures (that is, the width is not the same as the height). Also fixed a bug to have animations show up in the Existing Grhs list. Finally, added the ability to delete items from the list by pressing Delete or right-clicking them so they don't appear in the final product.
+
+Fix - Group sending packets: Fixed a typo in the group "ButIndex" packet routes.
+
+Add - Better multiple fonts support: Added better support on the font functions for multiple fonts to be used.
+
+Fix - Engine_Projectile_Erase: Fixed a bug with the Engine_Projectile_Erase routine.
+
+Fix - Connection establishing: Fixed a bug with the connection creation code so when the connection first fails, it won't take a few times to connect when trying again. Thanks to Hyan for fixing this bug.
+
+Fix - Textureless rendering: Fixed a bug when rendering without a texture that had the TextureNum variable not be set back to 0.
+
+Fix - Mailing to offline users: Fixed a bug in the mailing system when sending mail to offline users. It was a very tricky little bug since it lies in some strange behavior of the ODBC connector.
+
+Add - Better method descriptions: Added some better method descriptions to the top of methods along with linking them back to the online code documentation (even though not all methods are documented).
+
+Fix - Load_NPC: Fixed a small potential bug in the Load_NPC routine that is more of a performance issue than anything. The memory was being allocated for a NPC before a check for the NPC being valid was even made.
+
+Fix - Login Bug: Fixed a small potential bug in the Login screen. That bug made the players need to click around 3 times in the connect button to join the game. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
